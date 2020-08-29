@@ -68,12 +68,7 @@ class WeatherDisplay extends React.Component {
      * Clock ticking
      */
     tick() {
-        let dateObj = this.getFormattedDate()
-        this.setState({
-            time: dateObj.time,
-            date: dateObj.date,
-            suffix: dateObj.suffix
-        });
+        this.retrieveData()
     }
 
     /**
@@ -166,15 +161,6 @@ class Clock extends React.Component {
             date: dateObj.date,
             suffix: dateObj.suffix
         });
-
-        fetch("http://localhost:8080/api/pins", {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(json => console.log(json))
     }
 
     /**
@@ -226,11 +212,68 @@ class Clock extends React.Component {
 }
 
 
-
 /**
  * Basic root class
  */
 class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            garage: false,
+            frontDoor: false
+        }
+    }
+
+    /** Once mounted, retrieve the weather data for today
+     *
+     * Note: Currently hardcoded to Philly data in the server. This needs
+     * to be updated to be zip-code request (ask user to share location data,
+     * or override)
+     */
+    componentDidMount() {
+        this.retrieveData()
+
+        // Refresh weather every second
+        this.intervalID = setInterval(
+            () => this.tick(),
+            1000
+        );
+    }
+
+    /**
+     * Clear out the intervalID for reset
+     */
+    componentWillUnmount() {
+        clearInterval(this.intervalID);
+    }
+
+    /**
+     * Clock ticking
+     */
+    tick() {
+        this.retrieveData()
+    }
+
+    /**
+     * Go out and hit the API for the pin data
+     */
+    retrieveData() {
+        fetch("http://localhost:8080/api/pins", {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(json => this.parseResponse(json))
+    }
+
+    parseResponse(json) {
+        console.log(json)
+        // TODO: If the current status doesnt match the value,
+        // update state
+    }
 
     render() {
         return (
@@ -244,8 +287,8 @@ class App extends React.Component {
                     </div>
                 </div>
                 <div className="sensorContainer">
-                    <ContactSensor name="garage" isClosed={false} />
-                    <ContactSensor name="front door" isClosed={true} />
+                    <ContactSensor name="garage" isClosed={this.state.garage} />
+                    <ContactSensor name="front door" isClosed={this.state.frontDoor} />
                 </div>
             </div>
     );
