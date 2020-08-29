@@ -21,7 +21,6 @@ class ContactSensor extends React.Component {
     }
 }
 
-
 /**
  * This is the main display component for the weather readout
  */
@@ -167,6 +166,15 @@ class Clock extends React.Component {
             date: dateObj.date,
             suffix: dateObj.suffix
         });
+
+        fetch("http://localhost:8080/api/pins", {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(json => console.log(json))
     }
 
     /**
