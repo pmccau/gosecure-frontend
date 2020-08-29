@@ -1,13 +1,108 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    background-color: #092238;
+    font: 14px "Century Gothic", Futura, sans-serif;
+    margin: 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*
+ Basic layout:
+
+    Column 1                        Column 2
+  _________________________________________
+ |  widgetContainer                 |
+ |  _______________________________________
+ |  |  widgetMainContainer          |
+ |  |       widgetMainText          |
+ |  |       widgetMainTextSmall     |
+ |  ---------------------------------------
+ |  |  widgetSecondaryContainer     |
+ |  |       widgetSecondaryText     |
+ |  |       widgetSecondaryImg      |
+ |  |______________________________________
+ |__________________________________|______
+
+ */
+.columnContainer {
+    height: 60%;
+}
+
+.column {
+    float:left;
+    width: 50%;
+}
+
+.widgetContainer {
+    display: block;
+    width: 100%;
+}
+
+.widgetMainContainer {
+    display: flex;
+}
+
+.widgetMainText {
+    font-size: 10vw;
+    color: #A9DDEA;
+}
+
+.widgetMainTextSmall {
+    font-size: 2vw;
+    padding-top: 8vw;
+    color: ivory;
+}
+
+.widgetSecondaryContainer {
+    padding-top: 2vw;
+}
+
+.widgetSecondaryText {
+    font-size: 3.5vw;
+    display: inline-block;
+    vertical-align: top;
+    color: ivory;
+}
+
+.widgetSecondaryImg {
+    margin: auto;
+    width: auto;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/*
+   This will be all of the contact sensor stuff
+ */
+.sensorContainer {
+    position: relative;
+    bottom: 20%;
+    left: 0%;
+    height: 30%;
+    width: 100%;
+    display: inline-block;
+}
+
+.sensorButton {
+    border-radius: 1vw;
+    margin: 2.5%;
+    width: 45%;
+    display: table;
+    height: 50%;
+    padding-bottom: 10px;
+}
+
+.sensorButtonText {
+    text-align: center;
+    vertical-align: center;
+    font-size: 6vw;
+    display: table-cell;
+}
+
+.false {
+    color: #092238;
+    background-color: #A9DDEA;
+}
+
+.true {
+    color: #092238;
+    background-color: ivory;
 }
