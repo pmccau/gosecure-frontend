@@ -12,7 +12,7 @@ class ContactSensor extends React.Component {
 
     render() {
         return (
-            <div className={"sensorButton " + this.props.isClosed}>
+            <div className={"sensorButton " + this.props.isClosed + " blink-" + this.props.blink }>
                 <div className="sensorButtonText">
                     {this.props.name}
                 </div>
@@ -221,7 +221,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             garage: false,
-            frontDoor: false
+            front_door: false,
+            blink: false
         }
     }
 
@@ -237,7 +238,7 @@ class App extends React.Component {
         // Refresh weather every second
         this.intervalID = setInterval(
             () => this.tick(),
-            1000
+            500
         );
     }
 
@@ -253,6 +254,10 @@ class App extends React.Component {
      */
     tick() {
         this.retrieveData()
+        let nextBlink = !this.state.blink
+        this.setState({
+            blink: nextBlink,
+        })
     }
 
     /**
@@ -270,9 +275,15 @@ class App extends React.Component {
     }
 
     parseResponse(json) {
-        console.log(json)
-        // TODO: If the current status doesnt match the value,
-        // update state
+        for (let i = 0; i < json.length; i++) {
+            let sensor = json[i]
+            console.log(this.state[sensor.Name.replace(" ", "_")])
+            if (this.state[sensor.Name.replace(" ", "_")] != sensor.Current) {
+                this.setState({
+                    [sensor.Name]: sensor.Current,
+                })
+            }
+        }
     }
 
     render() {
@@ -286,9 +297,15 @@ class App extends React.Component {
                         <Clock />
                     </div>
                 </div>
-                <div className="sensorContainer">
-                    <ContactSensor name="garage" isClosed={this.state.garage} />
-                    <ContactSensor name="front door" isClosed={this.state.frontDoor} />
+                <div className={"sensorContainer"}>
+                    <ContactSensor
+                        name="garage"
+                        isClosed={this.state.garage}
+                        blink={this.state.blink && this.state.garage}/>
+                    <ContactSensor
+                        name="front door"
+                        isClosed={this.state.front_door}
+                        blink={this.state.blink && this.state.front_door}/>
                 </div>
             </div>
     );

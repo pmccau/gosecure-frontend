@@ -106,3 +106,7 @@ body {
     color: #092238;
     background-color: ivory;
 }
+
+.blink-true {
+    background-color: #fca103;
+}
