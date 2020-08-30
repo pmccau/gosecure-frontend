@@ -32,6 +32,7 @@ class WeatherDisplay extends React.Component {
             "01d": "sun",
             "02d": "sun_clouds",
             "03d": "clouds",
+	    "03n": "clouds",
             "04d": "clouds",
             "09d": "sun_rain",
             "10d": "rain",
@@ -98,6 +99,7 @@ class WeatherDisplay extends React.Component {
             humidity: json.main.humidity,
             iconCode: json.weather[0].icon,
         })
+	console.log(this.state.iconCode)
     }
 
     /**
@@ -277,8 +279,8 @@ class App extends React.Component {
     parseResponse(json) {
         for (let i = 0; i < json.length; i++) {
             let sensor = json[i]
-            console.log(this.state[sensor.Name.replace(" ", "_")])
-            if (this.state[sensor.Name.replace(" ", "_")] != sensor.Current) {
+	    sensor.Name = sensor.Name.replace(" ", "_")
+            if (this.state[sensor.Name] != sensor.Current) {
                 this.setState({
                     [sensor.Name]: sensor.Current,
                 })
