@@ -281,10 +281,12 @@ class App extends React.Component {
             let sensor = json[i]
             sensor.Name = sensor.Name.replace(" ", "_")
             if (this.state[sensor.Name] != sensor.Current) {
+                let old_state = this.state[sensor.Name]
                 this.setState({
                     [sensor.Name]: sensor.Current,
                 })
-                var audio = new Audio(process.env.PUBLIC_URL + 'sml_alerts_notification_01.mp3')
+                let audio = old_state ? 'opening.mp3' : 'closing.mp3'
+                audio = new Audio(process.env.PUBLIC_URL + audio)
                 audio.play()
             }
         }
