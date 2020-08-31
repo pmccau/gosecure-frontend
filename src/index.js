@@ -30,10 +30,13 @@ class WeatherDisplay extends React.Component {
         this.state = { data: [] };
         this.icons = {
             "01d": "sun",
+            "01n": "moon",
             "02d": "sun_clouds",
+            "02n": "moon_clouds",
             "03d": "clouds",
             "03n": "clouds",
             "04d": "clouds",
+            "04n": "clouds",
             "09d": "sun_rain",
             "10d": "rain",
             "11d": "thunder",
