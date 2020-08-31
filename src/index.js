@@ -32,7 +32,7 @@ class WeatherDisplay extends React.Component {
             "01d": "sun",
             "02d": "sun_clouds",
             "03d": "clouds",
-	    "03n": "clouds",
+            "03n": "clouds",
             "04d": "clouds",
             "09d": "sun_rain",
             "10d": "rain",
@@ -99,7 +99,7 @@ class WeatherDisplay extends React.Component {
             humidity: json.main.humidity,
             iconCode: json.weather[0].icon,
         })
-	console.log(this.state.iconCode)
+        console.log(this.state.iconCode)
     }
 
     /**
@@ -279,11 +279,13 @@ class App extends React.Component {
     parseResponse(json) {
         for (let i = 0; i < json.length; i++) {
             let sensor = json[i]
-	    sensor.Name = sensor.Name.replace(" ", "_")
+            sensor.Name = sensor.Name.replace(" ", "_")
             if (this.state[sensor.Name] != sensor.Current) {
                 this.setState({
                     [sensor.Name]: sensor.Current,
                 })
+                var audio = new Audio(process.env.PUBLIC_URL + 'sml_alerts_notification_01.mp3')
+                audio.play()
             }
         }
     }
@@ -310,7 +312,7 @@ class App extends React.Component {
                         blink={this.state.blink && this.state.front_door}/>
                 </div>
             </div>
-    );
+        );
     }
 }
 
