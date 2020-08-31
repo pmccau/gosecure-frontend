@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import WeatherDisplay from "./WeatherDisplay";
 import Clock from "./Clock";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { NavigationBar } from './NavigationBar';
 
 /**
  * This will be the contact sensor display
@@ -104,6 +106,11 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <React.Fragment>
+                    <Router>
+                        <NavigationBar />
+                    </Router>
+                </React.Fragment>
                 <div className="column-container">
                     <div className="column">
                         <WeatherDisplay />
