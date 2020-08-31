@@ -94,7 +94,7 @@ class App extends React.Component {
                 this.setState({
                     [sensor.Name]: sensor.Current,
                 })
-                let audio = old_state ? 'opening.mp3' : 'closing.mp3'
+                let audio = old_state ? 'closing.mp3' : 'opening.mp3'
                 audio = new Audio(process.env.PUBLIC_URL + audio)
                 audio.play()
             }
