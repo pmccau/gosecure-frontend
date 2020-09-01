@@ -1,7 +1,6 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
-import { DogTracker } from './DogTracker'
-
+import DogTracker from "./DogTracker";
 
 class Lock extends React.Component {
     constructor(props) {
@@ -46,12 +45,16 @@ export const NavigationBar = () => (
         <Lock
             className="navicon"
         />
-        <a href={"/"}>
-            <img
-                className="navicon"
-                src={process.env.PUBLIC_URL + "paw-orange" + ".png"}
-            />
-        </a>
+        <DogTracker
+            className="navicon"
+        />
+
+        {/*<a href={"/"}>*/}
+        {/*    <img*/}
+        {/*        className="navicon"*/}
+        {/*        src={process.env.PUBLIC_URL + "paw-orange" + ".png"}*/}
+        {/*    />*/}
+        {/*</a>*/}
         {/*<Navbar.Brand href="/">*/}
 
         {/*</Navbar.Brand>*/}
