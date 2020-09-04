@@ -76,8 +76,6 @@ body {
 Nav Bar
  */
 .navbar {
-    /*background-color: gainsboro;*/
-    /*display: flex-;*/
     padding-bottom: 10px;
     border-bottom: solid ivory;
     border-width: 2px;
@@ -98,27 +96,7 @@ Nav Bar
     height: 100%;
     max-height: 5vw;
     padding: 0% 5% 0% 5%;
-    /*background-color: #fca103;*/
     margin-right: 2.5%;
-    /*border: solid red;*/
-    /*border-width: 1px;*/
-}
-
-/*a, .navbar-nav, .navbar-light .nav-link {*/
-/*    color: gainsboro;*/
-/*}*/
-
-.modal-content {
-    position: fixed;
-    top: 25%;
-    left: 25%;
-    width: 50%;
-    height: 50%;
-    background-color: ivory;
-    /*padding-right: 17px;*/
-    border: solid red;
-    border-width: 1px;
-    border-radius: 20px;
 }
 
 /*
@@ -131,7 +109,7 @@ Nav Bar
     height: 20%;
     width: 90%;
     display: inline-block;
-    /*padding-top: 2.5%;*/
+    z-index: -1;
 }
 
 .sensorButton {

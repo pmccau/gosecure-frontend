@@ -1,31 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import WeatherDisplay from "./WeatherDisplay";
-import Clock from "./Clock";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { NavigationBar } from './NavigationBar';
-import DogTracker from "./DogTracker";
-
-
-/**
- * This will be the contact sensor display
- */
-class ContactSensor extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className={"sensorButton " + this.props.isClosed + " blink-" + this.props.blink }>
-                <div className="sensorButtonText">
-                    {this.props.name}
-                </div>
-            </div>
-        )
-    }
-}
+import WeatherDisplay from "./widgets/WeatherDisplay";
+import Clock from "./widgets/Clock";
+import { BrowserRouter as Router } from "react-router-dom";
+import NavigationBar from './navigation/NavigationBar';
+import ContactSensor from "./widgets/ContactSensor";
 
 /**
  * Basic root class
@@ -131,11 +111,6 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <button
-                    className="test-log"
-                    onClick={this.retrievePinLogs}
-                >FETCH!
-                </button>
                 <React.Fragment>
                     <Router>
                         <NavigationBar />
