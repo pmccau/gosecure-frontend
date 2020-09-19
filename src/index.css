@@ -1,7 +1,7 @@
 body {
     background-color: #092238;
     font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
+    margin: 2%;
     overflow: hidden;
 }
 
@@ -108,9 +108,17 @@ Nav Bar
 /*    color: gainsboro;*/
 /*}*/
 
-.fade .modal .show {
-    display: block;
-    padding-right: 17px;
+.modal-content {
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    background-color: ivory;
+    /*padding-right: 17px;*/
+    border: solid red;
+    border-width: 1px;
+    border-radius: 20px;
 }
 
 /*

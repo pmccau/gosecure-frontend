@@ -5,6 +5,8 @@ import WeatherDisplay from "./WeatherDisplay";
 import Clock from "./Clock";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NavigationBar } from './NavigationBar';
+import DogTracker from "./DogTracker";
+
 
 /**
  * This will be the contact sensor display
@@ -37,6 +39,29 @@ class App extends React.Component {
             front_door: false,
             blink: false
         }
+    }
+
+    /**
+     * This should really be a component of its own... TODO
+     */
+    retrievePinLogs() {
+        fetch("http://localhost:8080/api/logs", {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(json => {
+                console.log(json)
+                let events = json["events"].split("\n")
+                if (events[0].charAt(0) != '[') {
+                    events = events.slice(1, events.length - 1)
+                }
+                for (let i = 0; i < events.length; i++) {
+                    console.log(" > i=" + events[i])
+                }
+            })
     }
 
     /** Once mounted, retrieve the weather data for today
@@ -106,6 +131,11 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <button
+                    className="test-log"
+                    onClick={this.retrievePinLogs}
+                >FETCH!
+                </button>
                 <React.Fragment>
                     <Router>
                         <NavigationBar />
