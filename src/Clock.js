@@ -37,7 +37,12 @@ class Clock extends React.Component {
      */
     getFormattedDate() {
         let now = new Date();
-        let hour = now.getHours() > 12 ? now.getHours() - 12 : now.getHours()
+        let hour;
+	if (now.getHours() > 12) {
+		hour = now.getHours() - 12
+	} else {
+		now.getHours() == 0 ? hour = 12 : hour = now.getHours()
+	}
         let suffix = now.getHours() > 12 ? "pm" : "am"
         let time = hour + ":" +
             String(now.getMinutes()).padStart(2, '0') + ":" +
