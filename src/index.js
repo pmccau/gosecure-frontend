@@ -45,7 +45,7 @@ class App extends React.Component {
      * This should really be a component of its own... TODO
      */
     retrievePinLogs() {
-        fetch("http://localhost:8080/api/logs", {
+        fetch("http://localhost:5000/api/logs", {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -102,7 +102,7 @@ class App extends React.Component {
      * Go out and hit the API for the pin data
      */
     retrieveData() {
-        fetch("http://localhost:8080/api/pins", {
+        fetch("http://localhost:5000/api/pins", {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
