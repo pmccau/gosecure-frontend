@@ -58,7 +58,7 @@ class WeatherDisplay extends React.Component {
      * Go out and hit the API for the weather data
      */
     retrieveData() {
-        fetch("http://localhost:8080/api/weather", {
+        fetch("http://localhost:5000/api/weather/19147", {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

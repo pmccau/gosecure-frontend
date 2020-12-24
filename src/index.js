@@ -45,7 +45,7 @@ class App extends React.Component {
      * This should really be a component of its own... TODO
      */
     retrievePinLogs() {
-        fetch("http://localhost:8080/api/logs", {
+        fetch("http://localhost:5000/api/logs/pins", {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -102,7 +102,7 @@ class App extends React.Component {
      * Go out and hit the API for the pin data
      */
     retrieveData() {
-        fetch("http://localhost:8080/api/pins", {
+        fetch("http://localhost:5000/api/pins", {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -131,11 +131,11 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <button
-                    className="test-log"
-                    onClick={this.retrievePinLogs}
-                >FETCH!
-                </button>
+                {/*<button*/}
+                {/*    className="test-log"*/}
+                {/*    onClick={this.retrievePinLogs}*/}
+                {/*>FETCH!*/}
+                {/*</button>*/}
                 <React.Fragment>
                     <Router>
                         <NavigationBar />
@@ -144,20 +144,18 @@ class App extends React.Component {
                 <div className="column-container">
                     <div className="column">
                         <WeatherDisplay />
+                        <ContactSensor
+                            name="garage"
+                            isClosed={this.state.garage}
+                            blink={this.state.blink && this.state.garage}/>
+                        <ContactSensor
+                            name="front door"
+                            isClosed={this.state.front_door}
+                            blink={this.state.blink && this.state.front_door}/>
                     </div>
                     <div className="column">
                         <Clock />
                     </div>
-                </div>
-                <div className={"sensorContainer"}>
-                    <ContactSensor
-                        name="garage"
-                        isClosed={this.state.garage}
-                        blink={this.state.blink && this.state.garage}/>
-                    <ContactSensor
-                        name="front door"
-                        isClosed={this.state.front_door}
-                        blink={this.state.blink && this.state.front_door}/>
                 </div>
             </div>
         );

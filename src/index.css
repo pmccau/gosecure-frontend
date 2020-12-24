@@ -29,7 +29,7 @@ body {
 
 .column {
     float:left;
-    width: 45%;
+    width: 50%;
 }
 
 .widgetContainer {
@@ -121,6 +121,7 @@ Nav Bar
     border-radius: 20px;
 }
 
+
 /*
    This will be all of the contact sensor stuff
  */
@@ -137,7 +138,7 @@ Nav Bar
 .sensorButton {
     border-radius: 1vw;
     margin: 2.5% 0% 2.5% 0%;
-    width: 45%;
+    width: 90%;
     display: table;
     height: 50%;
     padding-bottom: 10px;
