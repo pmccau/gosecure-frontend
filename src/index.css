@@ -84,6 +84,16 @@ Nav Bar
     max-height: 7vw;
 }
 
+.button-cell {
+    /*max-width: 5vw;*/
+    width: 100px;
+    height: 100%;
+    padding: 0% 5% 0% 5%;
+    background-color: #092238;
+    border: hidden;
+    margin-right: 2.5%;
+}
+
 .navbutton {
     max-width: 5vw;
     height: 100%;
@@ -138,7 +148,7 @@ Nav Bar
 .sensorButton {
     border-radius: 1vw;
     margin: 2.5% 0% 2.5% 0%;
-    width: 90%;
+    width: 100%;
     display: table;
     height: 50%;
     padding-bottom: 10px;
