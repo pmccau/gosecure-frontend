@@ -9,7 +9,8 @@ const customStyles = {
         right                 : 'auto',
         bottom                : 'auto',
         marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
+        transform             : 'translate(-50%, -50%)',
+        backgroundColor       : '#092238'
     }
 };
 
@@ -129,32 +130,38 @@ class DogTracker extends React.Component {
                         <td className="widgetMainText">&nbsp;&nbsp;{this.getLastPee()}&nbsp;&nbsp;</td>
                         <td className="widgetMainText">&nbsp;&nbsp;{this.getLastPoo()}&nbsp;&nbsp;</td>
                     </tr><tr>
-                        <td><button onClick={() => this.logMovement(1)} className="sensorButton sensorButtonText">
+                        <td><div onClick={() => this.logMovement(1)} className="sensorButton true">
+                            <div className="sensorButtonText">
+                                <img width="50px" height="50px"
+                                    src={process.env.PUBLIC_URL + "move1.png"}
+                                />
+                            </div>
+                        </div></td>
+                        <td><div onClick={() => this.logMovement(2)} className="sensorButton true">
+                            <div className="sensorButtonText">
+                                <img width="50px" height="50px"
+                                     src={process.env.PUBLIC_URL + "move2.png"}
+                                />
+                            </div>
+                        </div></td>
+                </tr><tr><td colSpan="2">
+                    <div onClick={() => {
+                        this.logMovement(1);
+                        this.logMovement(2)
+                    }} className="sensorButton true">
+                        <div className="sensorButtonText">
                             <img width="50px" height="50px"
-                                src={process.env.PUBLIC_URL + "move1.png"}
+                                 src={process.env.PUBLIC_URL + "move1.png"}
                             />
-                        </button></td>
-                        <td><button onClick={() => this.logMovement(2)} className="sensorButton sensorButtonText">
                             <img width="50px" height="50px"
                                  src={process.env.PUBLIC_URL + "move2.png"}
                             />
-                        </button></td>
-                </tr><tr><td colSpan="2">
-                    <button onClick={() => {
-                        this.logMovement(1);
-                        this.logMovement(2)
-                    }} className="sensorButton sensorButtonText">
-                        <img width="50px" height="50px"
-                             src={process.env.PUBLIC_URL + "move1.png"}
-                        />
-                        <img width="50px" height="50px"
-                             src={process.env.PUBLIC_URL + "move2.png"}
-                        />
-                    </button>
+                        </div>
+                    </div>
                 </td></tr><tr><td>
-                    <button onClick={this.handleCloseModal} className="sensorButton sensorButtonText">
-                        cancel
-                    </button>
+                    <div onClick={this.handleCloseModal} className="sensorButton blink-true">
+                        <div className="sensorButtonText">all done</div>
+                    </div>
                 </td></tr></tbody></table>
             </div>
         )

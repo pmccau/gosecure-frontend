@@ -5,6 +5,10 @@ body {
     overflow: hidden;
 }
 
+.modal {
+    background-color: #092238;
+}
+
 /*
  Basic layout:
 
