@@ -88,9 +88,9 @@ class DogTracker extends React.Component {
     getTimeDifference(d1, d2) {
         const diff = (d1.getTime() - d2.getTime()) / 1000 / 60;
         const hours = parseInt(diff / 60)
-        const minutes = parseInt(diff)
+        const minutes = Math.round(parseInt(diff))
         const seconds = Math.round((diff - minutes) * 60)
-        console.log(seconds)
+        // console.log(seconds)
         return (("" + hours).length == 1 ? "0" + hours : hours) + ":" + (("" + minutes).length == 1 ? "0" + minutes : minutes)
     }
 
@@ -130,16 +130,16 @@ class DogTracker extends React.Component {
                         <td className="widgetMainText">&nbsp;&nbsp;{this.getLastPee()}&nbsp;&nbsp;</td>
                         <td className="widgetMainText">&nbsp;&nbsp;{this.getLastPoo()}&nbsp;&nbsp;</td>
                     </tr><tr>
-                        <td><div onClick={() => this.logMovement(1)} className="sensorButton true">
+                        <td><div onClick={() => this.logMovement(1)} className="sensorButton false">
                             <div className="sensorButtonText">
-                                <img width="50px" height="50px"
+                                <img width="120px" height="120px"
                                     src={process.env.PUBLIC_URL + "move1.png"}
                                 />
                             </div>
                         </div></td>
-                        <td><div onClick={() => this.logMovement(2)} className="sensorButton true">
+                        <td><div onClick={() => this.logMovement(2)} className="sensorButton false">
                             <div className="sensorButtonText">
-                                <img width="50px" height="50px"
+                                <img width="120px" height="120px"
                                      src={process.env.PUBLIC_URL + "move2.png"}
                                 />
                             </div>
@@ -148,12 +148,12 @@ class DogTracker extends React.Component {
                     <div onClick={() => {
                         this.logMovement(1);
                         this.logMovement(2)
-                    }} className="sensorButton true">
+                    }} className="sensorButton false">
                         <div className="sensorButtonText">
-                            <img width="50px" height="50px"
+                            <img width="120px" height="120px"
                                  src={process.env.PUBLIC_URL + "move1.png"}
                             />
-                            <img width="50px" height="50px"
+                            <img width="120px" height="120px"
                                  src={process.env.PUBLIC_URL + "move2.png"}
                             />
                         </div>
