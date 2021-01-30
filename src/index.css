@@ -50,6 +50,13 @@ body {
     color: #A9DDEA;
 }
 
+.widgetMainText-time {
+    align-content: center;
+    font-size: 3vw;
+    color: #A9DDEA;
+    width: 50%;
+}
+
 .widgetMainTextSmall {
     font-size: 2vw;
     padding-top: 8vw;

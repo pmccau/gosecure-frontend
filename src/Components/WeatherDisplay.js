@@ -1,4 +1,6 @@
 import React from "react";
+import * as config from '../Config/AppConfig'
+const Settings = config.Settings;
 
 /**
  * This is the main display component for the weather readout
@@ -31,7 +33,7 @@ class WeatherDisplay extends React.Component {
      * or override)
      */
     componentDidMount() {
-        this.retrieveData()
+        this.retrieveData(this.props.zipcode)
 
         // Refresh weather every 10 minutes
         this.intervalID = setInterval(
@@ -51,14 +53,14 @@ class WeatherDisplay extends React.Component {
      * Clock ticking
      */
     tick() {
-        this.retrieveData()
+        this.retrieveData(this.props.zipcode)
     }
 
     /**
      * Go out and hit the API for the weather data
      */
-    retrieveData() {
-        fetch("http://localhost:5000/api/weather/19147", {
+    retrieveData(zipCode) {
+        fetch(`${Settings.serverRootURL}:${Settings.serverPort}/api/weather/${zipCode}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
