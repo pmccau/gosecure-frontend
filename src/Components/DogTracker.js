@@ -38,7 +38,13 @@ class DogTracker extends React.Component {
    * Handle the opening/closing of the modal
    */
   handleModalChange(isOpen) {
-    this.setState({ showModal: isOpen });
+    if (isOpen) {
+      this.setState({ showModal: isOpen }
+          ,() => {
+            setTimeout(() => {this.handleModalChange(false)}, 10000)});
+    } else {
+      this.setState({ showModal: isOpen });
+    }
   }
 
   /**

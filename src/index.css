@@ -106,12 +106,14 @@ Nav Bar
 }
 
 .navbutton {
+    width: 20%;
     max-width: 5vw;
     height: 100%;
     padding: 0% 5% 0% 5%;
     background-color: #092238;
     border: hidden;
     margin-right: 2.5%;
+    outline: none;
 }
 
 .navicon {
