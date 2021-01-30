@@ -30,6 +30,7 @@ class DogTracker extends React.Component {
       showModal: false,
       iconName: "paw-orange",
       status: undefined,
+      timeout: null,
     };
     this.logMovement = this.logMovement.bind(this);
   }
@@ -39,11 +40,20 @@ class DogTracker extends React.Component {
    */
   handleModalChange(isOpen) {
     if (isOpen) {
-      this.setState({ showModal: isOpen }
-          ,() => {
-            setTimeout(() => {this.handleModalChange(false)}, 10000)});
+
+      const timer = setTimeout(() => {this.handleModalChange(false)}, 10000);
+
+      this.setState({
+        showModal: isOpen,
+        timeout: timer,
+      });
+
     } else {
-      this.setState({ showModal: isOpen });
+      if (this.timeout) clearTimeout(this.timeout);
+      this.setState({
+        showModal: isOpen,
+        timeout: null,
+      });
     }
   }
 
@@ -126,9 +136,9 @@ class DogTracker extends React.Component {
       } else if (diff.minutes > 45) {
         hr = `${diff.hours + 1}`;
       }
-      return `About ${hr} hours`;
+      return `About ${hr} hour${hr == 1 ? "" : "s"}`;
     } else {
-      return `${diff.days} days!`;
+      return `${diff.days} ${diff.days == 1 ? "whole day" : "days"}!`;
     }
 
   return "?";
