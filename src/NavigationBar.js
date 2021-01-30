@@ -31,6 +31,8 @@ class DogTracker extends React.Component {
             status: this.getStatus(),
         };
         this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.logMovement = this.logMovement.bind(this);
+        this.getStatus = this.getStatus.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
     }
 
@@ -55,8 +57,25 @@ class DogTracker extends React.Component {
     logMovement (number) {
         const response = fetch("http://localhost:5000/api/movement/" + number, {
             method: 'POST',
-        })
-            .then(() => this.getStatus())
+        }).then(
+            fetch("http://localhost:5000/api/movement", {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            })
+            // .then(res => console.log(res.json()))
+            .then(res => res.json())
+            .then(json => {
+//                return json;
+                // console.log(json)
+                this.setState({
+                    status: json,
+                })
+            })
+        )
+
+//        }).then(this.getStatus());
     }
 
     /**
@@ -72,6 +91,7 @@ class DogTracker extends React.Component {
             // .then(res => console.log(res.json()))
             .then(res => res.json())
             .then(json => {
+//                return json;
                 // console.log(json)
                 this.setState({
                     status: json,
@@ -88,7 +108,7 @@ class DogTracker extends React.Component {
     getTimeDifference(d1, d2) {
         const diff = (d1.getTime() - d2.getTime()) / 1000 / 60;
         const hours = parseInt(diff / 60)
-        const minutes = Math.round(parseInt(diff))
+        const minutes = ("" + Math.round(parseInt(diff))).substr(0, 2)
         const seconds = Math.round((diff - minutes) * 60)
         // console.log(seconds)
         return (("" + hours).length == 1 ? "0" + hours : hours) + ":" + (("" + minutes).length == 1 ? "0" + minutes : minutes)
@@ -132,14 +152,14 @@ class DogTracker extends React.Component {
                     </tr><tr>
                         <td><div onClick={() => this.logMovement(1)} className="sensorButton false">
                             <div className="sensorButtonText">
-                                <img width="120px" height="120px"
+                                <img width="70px" height="70px"
                                     src={process.env.PUBLIC_URL + "move1.png"}
                                 />
                             </div>
                         </div></td>
                         <td><div onClick={() => this.logMovement(2)} className="sensorButton false">
                             <div className="sensorButtonText">
-                                <img width="120px" height="120px"
+                                <img width="70px" height="70px"
                                      src={process.env.PUBLIC_URL + "move2.png"}
                                 />
                             </div>
@@ -150,10 +170,10 @@ class DogTracker extends React.Component {
                         this.logMovement(2)
                     }} className="sensorButton false">
                         <div className="sensorButtonText">
-                            <img width="120px" height="120px"
+                            <img width="70px" height="70px"
                                  src={process.env.PUBLIC_URL + "move1.png"}
                             />
-                            <img width="120px" height="120px"
+                            <img width="70px" height="70px"
                                  src={process.env.PUBLIC_URL + "move2.png"}
                             />
                         </div>
