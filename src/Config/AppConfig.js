@@ -3,7 +3,7 @@ export let CustomStyles;
 
 Settings = {
   serverRootURL: "http://192.168.86.123",
-  serverPort: "5000",
+  serverPort: "8080",
   clientRootURL: "http://localhost",
   clientPort: "3000",
 }
