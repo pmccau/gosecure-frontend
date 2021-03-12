@@ -167,6 +167,21 @@ Nav Bar
     padding-bottom: 10px;
 }
 
+.sensorButton-small {
+    border-radius: 1vw;
+    margin: 2.5% 0% 2.5% 0%;
+    width: 100%;
+    display: table;
+    padding-bottom: 10px;
+}
+
+.sensorButtonText-small {
+    text-align: center;
+    vertical-align: center;
+    font-size: 2vw;
+    display: table-cell;
+}
+
 .sensorButtonText {
     text-align: center;
     vertical-align: center;
@@ -187,3 +202,16 @@ Nav Bar
 .blink-true {
     background-color: #fca103;
 }
+
+/*iframe {*/
+/*    width: 600px;*/
+/*    height: 225px;*/
+/*    overflow: hidden;*/
+/*    !*overflow: auto;*!*/
+/*    !*zoom: 0.75;*!*/
+/*    !*-webkit-transform: scale(1);*!*/
+/*    !*-moz-transform: scale(1);*!*/
+/*    -moz-transform: scale(0.5, 0.5);*/
+/*    -moz-transform-origin:*/
+/*            top left;*/
+/*}*/
