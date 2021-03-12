@@ -183,7 +183,7 @@ class PiholeModal extends React.Component {
         >
           <div>
               <iframe src="http://192.168.86.213/admin/index.php"
-                style={{width: '1200px', height: "800px", overflow: "auto"}}/>
+                style={{width: '600px', height: "225px", overflow: "auto"}}/>
               <div onClick={ () => this.handleModalChange(false) } className="sensorButton blink-true">
                 <div className="sensorButtonText">all done</div>
               </div>
