@@ -6,19 +6,12 @@ import IframeResizer from "iframe-resizer-react";
 const CustomStyles = config.CustomStyles;
 
 /**
- * The DogTracker class is used to track when a dog has last gone out. It
- * will open a modal in the render function when the icon is clicked. This
- * is anchored in the NavigationBar.
+ * Simple modal object. Pass in props to build an iframe modal
  *
- * Does not interact with the server - all logic is self-contained. Previously
- * was hitting a DB on back end, but it was unnecessary and inefficient
- *
- * Key points:
- * =============================================================================
- * handleModalChange  =>  Opens/Closes
- * getLastMovement    =>  Displays the time difference since last
- *                        movement using some helpers
- * logMovement        =>  Set the most recent occurrence of a movement
+ * src: the source link
+ * scrolling: whether to allow or disallow scrolling
+ * iconName: The name of the icon to be shown as the button
+ * className: The class name of the icon
  */
 function IFrameModal(props) {
 

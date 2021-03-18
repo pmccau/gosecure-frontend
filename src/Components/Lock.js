@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * This will be the Z-wave controller button. At the moment, does not do much besides lock/unlock visually
+ */
 class Lock extends React.Component {
   constructor(props) {
     super(props)
